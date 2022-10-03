@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+nav {
+  border-bottom: 1px solid black;
+}
+
+.flights ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.flight {
+  display: inline-block;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
