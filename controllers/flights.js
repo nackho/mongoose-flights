@@ -4,10 +4,13 @@ module.exports = {
     new: newFlights,
     create,
     index,
+    show,
 };
 
 function newFlights(req, res) {
-    res.render("flights/new");
+    res.render("flights/new", {
+        title: "New Flight"
+    });
 }
 
 function create(req,res) {
@@ -22,7 +25,15 @@ function create(req,res) {
 function index(req,res) {
     Flight.find({}, function(err, flights) {
         res.render("flights/index", {
-            flights
+            title: "All Flights", flights
+        })
+    })
+}
+
+function show(req,res) {
+    Flight.findById(req.params.id, function(err,flight){
+        res.render("flights/show", {
+            title: "Flight Details", flight
         })
     })
 }
