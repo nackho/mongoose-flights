@@ -4,18 +4,31 @@ const Ticket = require("../models/ticket");
 module.exports = {
     create,
     new: newTicket,
+    addToFlight,
 };
 
 function create(req, res) {
-    //is there no flight property on req.body because we referenced the data from the Flight model? and then we create a req.body.flight to equal the flight ID of the ticket form we just added. then we use the ticket model to run create that acts on the form we added and some function, then redirect to the flight/flight id page
     req.body.flight = req.params.id
     Ticket.create(req.body, function(err, ticket) {
-    res.redirect(`/flights/${flight._id}`)
+    res.redirect(`/flights/${req.params.id}`)
     })
 }
 
 function newTicket(req, res) {
-    res.render("tickets/new", {
-        title: "New Ticket"
+    Flight.findById(req.params.id, function(err, flight) {
+        res.render("tickets/new", {
+            title: "New Ticket", flight
+         })
+    })
+}
+function addToFlight(req, res){
+    Flight.findById(req.params.id, function(err, flight){
+        Ticket.find({flight: flight._id}, function(err, tickets){
+            res.redirect(`/flights/${flight._id}`)
+            flight.save(function(err){
+                res.redirect(`/flights/${flight._id}`)
+        })
+        
+        })
     })
 }

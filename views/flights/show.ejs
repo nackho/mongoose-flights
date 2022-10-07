@@ -26,11 +26,8 @@
        <input type="datetime-local" name="arrival">
         <input type="submit" value="Add Destination">
     </form>
-    <!-- why flight.id instead of tickets/new, not located on CRUD file.
-    purpose of title ejs? 
-    where is /flights/:id/tickets/new defined on the server -->
     <button>  
-      <a href="/tickets/new/<%= flight._id %>"<%- title === 'Add Ticket' ? 'class="active"' : '' %>>Add Ticket</a>
+      <a href="/flights/<%= flight._id %>/tickets/new"><%- title === 'Add Ticket' ? 'class="active"' : '' %>Add Ticket</a>
     </button>
     <% if (flight.destinations.length) { %>
       <table>

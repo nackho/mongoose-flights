@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<!-- based off off 1:M new CRUD -->
+
 <form action="/flights/<%= flight._id %>/tickets" method="POST">
     <label>Seat:
       <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="A01">
