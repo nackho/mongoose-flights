@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+<!-- based off off 1:M new CRUD -->
+<form action="/flights/<%= flight._id %>/tickets" method="POST">
+    <label>Seat:
+      <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="A01">
+    </label><br>
+    <label>Enter Amount</label>
+      <input type="text" name="price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$0.00">
+    </label><br>
+    <input type="submit" value="Add Ticket">
+  </form>
+
+<%- include('../partials/footer') %>
